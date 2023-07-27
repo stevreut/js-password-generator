@@ -56,7 +56,7 @@ function generatePassword() {
   // }
   // // TODO - TEMPORARY code end
   let desiredCharCountAsStr = prompt("How many characters in password?");
-  // TODO - what happens if user presses "cancel" on the 'how many characters' prompt?
+  // TODO - what happens if user press,es "cancel" on the 'how many characters' prompt?
   let desiredCharCount = parseInt(desiredCharCountAsStr);
   // TODO - must check for validity - both in terms of being numeric and in terms of range
   let pw = "";  // password to be returned - initially set as empty string
