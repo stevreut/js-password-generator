@@ -2,10 +2,22 @@
 
 // Global variables
 let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let numerals = "0123456789";
+// Note:  These are the special characters as provided by OWASP
+// ( https://owasp.org/www-community/password-special-characters ) with
+// certain caveats:
+//    1. The space character has been elimited from the list.  No good can from having
+//         a space in a password.
+//    2. The quotation mark indicated as a special character had to be "escaped" in the
+//         string below by preceding with it with a backslash.
+//    3. The backslash indicated as a special character had to be "escaped" in the
+//         string below by preceding with it with another backslash.  Thus, the \\
+//         below is for ONE backslash.
+let specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 let alphabetUpper = [...alphabet];
 let alphabetLower = [...alphabet.toLowerCase()];
-let numerals = "0123456789";
 let numeralsArray = [...numerals];
+let specialArray  = [...specialChars];
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
@@ -14,8 +26,9 @@ let generateBtn = document.querySelector("#generate");
 function generatePassword() {
   let useUpper    = confirm("Use UPPER CASE letters?");
   let useLower    = confirm("Use lower case letters?");
-  let useNumerals = confirm("Use decimal numerals");
-  if (!(useUpper || useLower || userNumerals)) {
+  let useNumerals = confirm("Use decimal numerals?");
+  let useSpecial  = confirm("Use special characters?");
+  if (!(useUpper || useLower || userNumerals || useSpecial)) {
     // TODO - also alert, or just let calling function handle?
     return null;  
   }
@@ -29,7 +42,9 @@ function generatePassword() {
   if (useNumerals) {
     charsForPassword = [...charsForPassword, ...numeralsArray];
   }
-  // TODO - must also accommodate special characters
+  if (useSpecial) {
+    charsForPassword = [...charsForPassword, ...specialArray];
+  }
 
   // TODO - TEMPORARY code to test correct populate of character arrays:
   let len = charsForPassword.length;
