@@ -33,7 +33,10 @@ header {
   padding: 25px;
   padding-top: 0px;
   color:#777;
-  /* color: #bfd2e4; */
+}
+
+h2 {
+  text-align: center;
 }
 
 #alert-msg {
@@ -56,9 +59,7 @@ header {
   border-width: 1px;
   border-color: black;
   border-style: solid;
-  /* box-shadow:  0px 2px 8px 0px #28272726; */
   box-shadow: 3px 10px 10px 10px #222;
-  /* color: hsl(206, 17%, 28%); */
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
@@ -96,7 +97,6 @@ header {
 }
 
 .btn {
-  /* border: none; */
   background-color: hsl(178, 48%, 30%);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
@@ -133,7 +133,6 @@ button[disabled] {
   padding-right: 15px;
   padding-bottom: 85px;
   font-size: 1.2rem;
-  text-align: center;
   margin-top: 10px;
   margin-bottom: 20px;
   border: 2px dashed #c0c7cf;

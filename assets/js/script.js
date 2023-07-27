@@ -140,9 +140,19 @@ function generatePassword() {
 // Write password to the #password text area on page if possible, or
 // write an alert to on the page.
 function writePassword() {
-  let password = generatePassword();  // Note that generatePassword() returns an empty string when an error occurs.
+  generateBtn.disabled = true;
   let passwordText = document.querySelector("#password");
+  passwordText.style.backgroundColor = "#a0a0a0";
+  passwordText.style.color = "#808080";
+  let password = generatePassword();  // Note that generatePassword() returns an empty string when an error occurs.
   passwordText.value = password;
+  if (password !== "") {
+    passwordText.style.backgroundColor = "#00ff00";
+    passwordText.style.color = "#00A000";
+  } else {
+    passwordText.value = "No password generated";
+  }
+  generateBtn.disabled = false;
 }
 
 
