@@ -16,6 +16,8 @@ let specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";  // from OWASP
 //         string below by preceding with it with another backslash.  Thus, the \\
 //         below is for ONE backslash.
 
+let dimIntervalId = -1;  // interval ID for dynamic dimming of password textarea
+let dimCount = 0;        // timer controlling dynamic dimming of password textarea
 
 // Get references to the #generate element, which is the "Generate Password" button.
 let generateBtn = document.querySelector("#generate");
@@ -137,6 +139,38 @@ function generatePassword() {
 }
 
 
+// Slightly decrements the brightness of the password text area
+// ( called by dimPassword() )
+function decrementBrightness() {
+  dimCount--;
+  if (dimCount <= 0) {
+    clearInterval(dimIntervalId);
+    dimIntervalId = -1;
+  } else {
+    // Calculate intensity of green based on value of dimCount.  When dimCount is zero, the
+    // background color of the textarea will have dimmed to the point of being exactly the
+    // same color as the text color.
+    let greenValue = Math.floor(160+dimCount*95/120);
+    document.getElementById("password").style.backgroundColor = "rgb(0," + greenValue + ",0)";
+  }
+}
+
+
+// Dynamically dims the background color of the password textarea, thereby eventually 
+// making the displayed password invisible if the screen is inadvertently left visible
+// and unattended.
+function dimPassword() {
+  console.log("starting dim");
+  // A -1 value in dimIntervalId is used to indicate no interval loop is executing
+  if (dimIntervalId !== -1) {
+    clearInterval(dimIntervalId);
+    dimIntervalId = -1;
+  }
+  dimCount = 120;
+  dimIntervalId = setInterval(decrementBrightness, 250);
+}
+
+
 // Write password to the #password text area on page if possible, or
 // write an alert to on the page.
 function writePassword() {
@@ -154,6 +188,7 @@ function writePassword() {
     // attention to it.
     passwordText.style.backgroundColor = "#00ff00";
     passwordText.style.color = "#00A000";
+    dimPassword();
   } else {
     passwordText.value = "No password generated";
   }
@@ -162,5 +197,17 @@ function writePassword() {
 }
 
 
+function wakePassword() {
+  let pwTextArea = document.querySelector("#password");
+  if (pwTextArea.value !== "") {
+    dimPassword();
+  }
+}
+
+
 // Add event listener to Generate Password button
 generateBtn.addEventListener("click", writePassword);
+
+
+// Add event listener for focus on the password textarea
+document.querySelector("#password").addEventListener("mousemove",wakePassword);

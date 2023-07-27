@@ -127,7 +127,6 @@ button[disabled] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: none;
   background-color: var(--card-bg-all-color);
   display: block;
   width: 100%;
@@ -138,7 +137,8 @@ button[disabled] {
   font-size: 1.2rem;
   margin-top: 10px;
   margin-bottom: 20px;
-  border: 2px dashed #c0c7cf;
+  border-style: inset;
+  border-width: 2px;
   border-radius: 6px;
   resize: none;
   overflow: hidden;
