@@ -1,3 +1,6 @@
+:root {
+}
+
 *,
 *::before,
 *::after {
@@ -14,7 +17,8 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: #333;
+  color: #e8e7e7;
 }
 
 .wrapper {
@@ -25,26 +29,31 @@ body {
 
 header {
   text-align: center;
-  padding: 20px;
+  padding: 25px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color:#777;
+  /* color: #bfd2e4; */
 }
 
 #alert-msg {
+  border: none;
+  border-radius: 5px;
   visibility: hidden;
   font-weight: bold;
-  color: red;
-  background-color: yellow;
-  padding:5px;
+  color: #bb1212;
+  background-color: #dfc605;
+  padding:12px;
   display:inline-block;
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
-  border-radius: 5px;
+  background-color: #777;
+  border-radius: 15px;
   border-width: 1px;
+  border-color: black;
+  border-style: solid;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
+  /* color: hsl(206, 17%, 28%); */
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
@@ -55,7 +64,8 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  /* background: #e7e9eb; */
+  background: var(--text-and-window-color);
   height: 2px;
 }
 
@@ -82,9 +92,9 @@ header {
 }
 
 .btn {
-  border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
+  /* border: none; */
+  background-color: #563a6c;
+  border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
   color: hsl(0, 0%, 100%);
@@ -120,7 +130,7 @@ button[disabled] {
   font-size: 1.2rem;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 2px dashed #c0c7cf;
   border-radius: 6px;
   resize: none;
