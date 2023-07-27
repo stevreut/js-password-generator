@@ -58,22 +58,37 @@ function promptForLength() {
   if (validCount) {
     return length;
   } else {
-    // TODO - alert?
     return null;
   }
+}
+
+
+function hideUserAlert() {
+  // TODO - not yet implemented
+  // As initial state before processing, use script to hide alert box
+  // and blank out content.
+  console.log("alert box reset");
+}
+
+
+function alertUser(message) {
+  // TODO - net yet implemented
+  console.log("messsage would be '" + message + "'");
+  // TODO - ultimately, unhide box on screen (CSS) and place message there.
 }
 
 
 // Generate random password after prompting user for criteria
 function generatePassword() {
   charsForPassword = [];
+  hideUserAlert();
   let useUpper = promptAndAddSubstring ("Use UPPER CASE letters?", alphabetUpper);
   let useLower = promptAndAddSubstring ("Use lower case letters?", alphabetUpper.toLowerCase());
   let useNumerals = promptAndAddSubstring ("User decimal numerals?", numerals);
   let useSpecial = promptAndAddSubstring ("Use special characters?", specialChars);
   if (!(useUpper || useLower || useNumerals || useSpecial)) {
-    // TODO - also alert, or just let calling function handle?
-    return null;  
+    alertUser("No character types were selected");
+    return "";
   }
   // // TODO - TEMPORARY code to test correct populate of character arrays:
   // let len = charsForPassword.length;
@@ -84,8 +99,8 @@ function generatePassword() {
   // // TODO - TEMPORARY code end
   let desiredCharCount = promptForLength();
   if (desiredCharCount === null) {
-    // TODO alert?
-    return null;
+    alertUser("No valid length was selected.");
+    return "";
   }
   let pw = "";  // password to be returned - initially set as empty string
   for (let i=0; i<desiredCharCount; i++) {
@@ -99,7 +114,6 @@ function generatePassword() {
 // Write password to the #password input
 function writePassword() {
   let password = generatePassword();
-  // TODO - can we test for null here?
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
