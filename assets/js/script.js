@@ -28,9 +28,7 @@ function promptAndAddSubstring(question, substr) {
   //   question - verbiage displayed at prompt() call
   //   substr - string to be converted to array of characters if used
   //   returns:  boolean - true iff user opts to use substr based on response to prompt()
-  // TODO - confirm() prompts show buttons "cancel" and "OK".  These
-  // labels are not ideal for this app.  Can these be changed, or is
-  // there an alternative to confirm that serves our purposes?
+  question += "\n\n\"OK\"       for YES\n\"Cancel\" for NO";
   let response = confirm(question);
   if (response) {
     let charArray = [...substr];
@@ -142,18 +140,24 @@ function generatePassword() {
 // Write password to the #password text area on page if possible, or
 // write an alert to on the page.
 function writePassword() {
+  // Disable button while calculate password
   generateBtn.disabled = true;
   let passwordText = document.querySelector("#password");
+  // Dim the textarea for password pending good or bad results
   passwordText.style.backgroundColor = "#a0a0a0";
   passwordText.style.color = "#808080";
   let password = generatePassword();  // Note that generatePassword() returns an empty string when an error occurs.
+  // Set the password textarea with the result (which, in error scenarios, may be blank).
   passwordText.value = password;
   if (password !== "") {
+    // Non-empty password indicates success, so brighten the textarea draw
+    // attention to it.
     passwordText.style.backgroundColor = "#00ff00";
     passwordText.style.color = "#00A000";
   } else {
     passwordText.value = "No password generated";
   }
+  // Reenable button once password calculation is complete
   generateBtn.disabled = false;
 }
 
