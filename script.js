@@ -30,6 +30,14 @@ function generatePassword() {
     charsForPassword = [...charsForPassword, ...numeralsArray];
   }
   // TODO - must also accommodate special characters
+
+  // TODO - TEMPORARY code to test correct populate of character arrays:
+  let len = charsForPassword.length;
+  console.log("len = " + len);
+  for (let i=0; i<len; i++) {
+    console.log ("char " + i + " of " + len + " : " + charsForPassword[i]);
+  }
+  // TODO - TEMPORARY code end
 }
 
 // Write password to the #password input
