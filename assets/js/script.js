@@ -160,7 +160,6 @@ function decrementBrightness() {
 // making the displayed password invisible if the screen is inadvertently left visible
 // and unattended.
 function dimPassword() {
-  console.log("starting dim");
   // A -1 value in dimIntervalId is used to indicate no interval loop is executing
   if (dimIntervalId !== -1) {
     clearInterval(dimIntervalId);
