@@ -68,6 +68,14 @@ function hideUserAlert() {
   // As initial state before processing, use script to hide alert box
   // and blank out content.
   console.log("alert box reset");
+  let alertParagraph = document.getElementById("alert-msg");
+  if (alertParagraph === null) {
+    return;  // TODO
+  }
+  alertParagraph.textContent = "X";  // TODO
+  alertParagraph.style.visibility = "hidden";
+  // TODO - note: This appears to work, but its effect is delayed until
+  // after all user selections. (?)
 }
 
 
@@ -75,11 +83,18 @@ function alertUser(message) {
   // TODO - net yet implemented
   console.log("messsage would be '" + message + "'");
   // TODO - ultimately, unhide box on screen (CSS) and place message there.
+  let alertParagraph = document.getElementById("alert-msg");
+  if (alertParagraph === null) {
+    return;  // TODO
+  }
+  alertParagraph.textContent = message;
+  alertParagraph.style.visibility = "visible";
 }
 
 
 // Generate random password after prompting user for criteria
 function generatePassword() {
+  hideUserAlert();
   charsForPassword = [];
   hideUserAlert();
   let useUpper = promptAndAddSubstring ("Use UPPER CASE letters?", alphabetUpper);
