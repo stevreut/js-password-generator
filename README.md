@@ -48,10 +48,13 @@ The result of this project is a web site accessible via web browser at [stevreut
 
 Resulting web presentation should resemble the following:
 
-![alt text](./assets/images/screenshot1.png)
-![alt text](./assets/images/screenshot2.png)
-![alt text](./assets/images/screenshot3.png)
-![alt text](./assets/images/screenshot4.png)
+![initial state](./assets/images/screenshot1.png)
+![prompting for category of characters to use](./assets/images/screenshot2.png)
+![retry feature for bad password length entries](./assets/images/screenshot3.png)
+![display of error alert in-page](./assets/images/screenshot4.png)
+![display of password result](./assets/images/screenshot5.png)
+![partial dimming of password result](./assets/images/screenshot6.png)
+![complete dimming of password result](./assets/images/screenshot7.png)
 
 ## Credits
 
