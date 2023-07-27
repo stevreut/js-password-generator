@@ -1,6 +1,5 @@
-// Assignment code here
-
 // Global variables
+
 let charsForPassword = [];
 let alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let numerals = "0123456789";
@@ -16,8 +15,10 @@ let numerals = "0123456789";
 //         below is for ONE backslash.
 let specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
+
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
+
 
 // Prompts for whether a given set of characters (as a string) is to be used and,
 // if accepted by user, add to charsForPassword
@@ -32,6 +33,36 @@ function promptAndAddSubstring(question, substr) {
   }
   return response;
 }
+
+
+function promptForLength() {
+  let retryCount = 0;
+  let validCount = false;
+  let length = 0;
+  let countAsString;
+  while (!validCount && retryCount < 3) {
+    validCount = false;
+    if (retryCount === 0) {
+      countAsString = prompt("How many characters in password?");
+    } else {
+      countAsString= prompt("Invalid response. Try again. How many characters in password?");
+    }
+    length = parseInt(countAsString);
+    if (length !== null) {
+      if (length >= 8 && length <= 128) {
+        validCount = true;
+      }
+    }
+    retryCount++;
+  }
+  if (validCount) {
+    return length;
+  } else {
+    // TODO - alert?
+    return null;
+  }
+}
+
 
 // Generate random password after prompting user for criteria
 function generatePassword() {
@@ -51,10 +82,11 @@ function generatePassword() {
   //   console.log ("char " + i + " of " + len + " : " + charsForPassword[i]);
   // }
   // // TODO - TEMPORARY code end
-  let desiredCharCountAsStr = prompt("How many characters in password?");
-  // TODO - what happens if user press,es "cancel" on the 'how many characters' prompt?
-  let desiredCharCount = parseInt(desiredCharCountAsStr);
-  // TODO - must check for validity - both in terms of being numeric and in terms of range
+  let desiredCharCount = promptForLength();
+  if (desiredCharCount === null) {
+    // TODO alert?
+    return null;
+  }
   let pw = "";  // password to be returned - initially set as empty string
   for (let i=0; i<desiredCharCount; i++) {
     let charIndex = Math.floor(Math.random()*charsForPassword.length);
@@ -63,6 +95,7 @@ function generatePassword() {
   return pw;
 }
 
+
 // Write password to the #password input
 function writePassword() {
   let password = generatePassword();
@@ -70,6 +103,7 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
