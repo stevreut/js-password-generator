@@ -32,6 +32,11 @@ header {
 
 #alert-msg {
   visibility: hidden;
+  font-weight: bold;
+  color: red;
+  background-color: yellow;
+  padding:5px;
+  display:inline-block;
 }
 
 .card {
