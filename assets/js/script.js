@@ -50,10 +50,12 @@ function promptForLength() {
   let countAsString;
   while (!isValidCount && retryCount < 3) {
     isValidCount = false;
+    let basePrompt = "How many characters in password?\n(must be at least " + MIN_LEN +
+      " and no more than " + MAX_LEN + ")";
     if (retryCount === 0) {
-      countAsString = prompt("How many characters in password?");
+      countAsString = prompt(basePrompt);
     } else {
-      countAsString= prompt("Invalid response. Try again. How many characters in password?");
+      countAsString= prompt("INVALID RESPONSE. TRY AGAIN.\n" + basePrompt);
     }
     // Attempt conversion of string value to numeric value
     length = parseInt(countAsString);
