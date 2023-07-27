@@ -1,4 +1,5 @@
 :root {
+  --card-bg-all-color: hsl(176, 26%, 70%);
 }
 
 *,
@@ -18,7 +19,7 @@ body,
 body {
   font-family: sans-serif;
   background-color: #333;
-  color: #e8e7e7;
+  color: #e7e7e7;
 }
 
 .wrapper {
@@ -44,15 +45,19 @@ header {
   background-color: #dfc605;
   padding:12px;
   display:inline-block;
+  width: 100%;
+  text-align: center;
 }
 
 .card {
   background-color: #777;
+  color: var(--card-bg-all-color);
   border-radius: 15px;
   border-width: 1px;
   border-color: black;
   border-style: solid;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
+  /* box-shadow:  0px 2px 8px 0px #28272726; */
+  box-shadow: 3px 10px 10px 10px #222;
   /* color: hsl(206, 17%, 28%); */
   font-size: 18px;
   margin: 0 auto;
@@ -64,8 +69,7 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  /* background: #e7e9eb; */
-  background: var(--text-and-window-color);
+  background: var(--card-bg-all-color);
   height: 2px;
 }
 
@@ -81,7 +85,7 @@ header {
   content: " ";
   display: block;
   width: 100%;
-  background: #e7e9eb;
+  background: var(--card-bg-all-color);
   height: 2px;
 }
 
@@ -93,11 +97,11 @@ header {
 
 .btn {
   /* border: none; */
-  background-color: #563a6c;
+  background-color: hsl(178, 48%, 30%);
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
-  color: hsl(0, 0%, 100%);
+  color: #ffffff;
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
@@ -121,6 +125,7 @@ button[disabled] {
   -moz-appearance: none;
   appearance: none;
   border: none;
+  background-color: var(--card-bg-all-color);
   display: block;
   width: 100%;
   padding-top: 15px;
