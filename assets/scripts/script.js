@@ -1,52 +1,48 @@
 // Assignment code here
 
 // Global variables
-let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let charsForPassword = [];
+let alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let numerals = "0123456789";
 // Note:  These are the special characters as provided by OWASP
 // ( https://owasp.org/www-community/password-special-characters ) with
 // certain caveats:
-//    1. The space character has been elimited from the list.  No good can from having
-//         a space in a password.
+//    1. The space character has been eliminated from the list.  No good can come from
+//         having a space in a password.
 //    2. The quotation mark indicated as a special character had to be "escaped" in the
 //         string below by preceding with it with a backslash.
 //    3. The backslash indicated as a special character had to be "escaped" in the
 //         string below by preceding with it with another backslash.  Thus, the \\
 //         below is for ONE backslash.
 let specialChars = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-let alphabetUpper = [...alphabet];
-let alphabetLower = [...alphabet.toLowerCase()];
-let numeralsArray = [...numerals];
-let specialArray  = [...specialChars];
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
 
-// Generate random password after prompting user for criteria
-function generatePassword() {
+// Prompts for whether a given set of characters (as a string) is to be used and,
+// if accepted by user, add to charsForPassword
+function promptAndAddSubstring(question, substr) {
   // TODO - confirm() prompts show buttons "cancel" and "OK".  These
   // labels are not ideal for this app.  Can these be changed, or is
   // there an alternative to confirm that serves our purposes?
-  let useUpper    = confirm("Use UPPER CASE letters?");
-  let useLower    = confirm("Use lower case letters?");
-  let useNumerals = confirm("Use decimal numerals?");
-  let useSpecial  = confirm("Use special characters?");
+  let response = confirm(question);
+  if (response) {
+    let charArray = [...substr];
+    charsForPassword = [...charsForPassword, ...substr];
+  }
+  return response;
+}
+
+// Generate random password after prompting user for criteria
+function generatePassword() {
+  charsForPassword = [];
+  let useUpper = promptAndAddSubstring ("Use UPPER CASE letters?", alphabetUpper);
+  let useLower = promptAndAddSubstring ("Use lower case letters?", alphabetUpper.toLowerCase());
+  let useNumerals = promptAndAddSubstring ("User decimal numerals?", numerals);
+  let useSpecial = promptAndAddSubstring ("Use special characters?", specialChars);
   if (!(useUpper || useLower || useNumerals || useSpecial)) {
     // TODO - also alert, or just let calling function handle?
     return null;  
-  }
-  let charsForPassword = [];
-  if (useUpper) {
-    charsForPassword = [...charsForPassword, ...alphabetUpper];
-  }
-  if (useLower) {
-    charsForPassword = [...charsForPassword, ...alphabetLower];
-  }
-  if (useNumerals) {
-    charsForPassword = [...charsForPassword, ...numeralsArray];
-  }
-  if (useSpecial) {
-    charsForPassword = [...charsForPassword, ...specialArray];
   }
   // // TODO - TEMPORARY code to test correct populate of character arrays:
   // let len = charsForPassword.length;
